@@ -13,10 +13,10 @@ get_os() {
     [ -f /etc/lsb-release ] && awk -F'[="]+' '/DESCRIPTION/{print $2}' /etc/lsb-release && return
 }
 
-GETOS = $( get_os )
+GETOS=$( get_os )
 
-OS=$(head -n1 /etc/issue | cut -f 1 -d ' ')
-VER=$(cat /etc/debian_version|grep -o [0-9]|head -n1)
+OS=$(echo $GETOS | sed 's/\([a-zA-Z]\)\s.*/\1/')
+VER=$(echo $GETOS | grep -o [0-9]|head -n1)
 clear
 echo "$OS $VER"
 exit
