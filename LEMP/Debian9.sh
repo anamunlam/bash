@@ -35,7 +35,7 @@ confnginx()
         mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
     fi
     
-    wget -qO /etc/nginx/sites-available/default http://lemp.sh.ahka.net/file/site_detault_php7.0.conf
+    wget -qO /etc/nginx/sites-available/default "https://raw.githubusercontent.com/anamunlam/bash/master/LEMP/site_detault_php7.0.conf" --no-check-certificate
 }
 
 confphp()
