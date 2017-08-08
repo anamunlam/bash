@@ -17,6 +17,11 @@ GETOS=$( get_os )
 
 OS=$(echo $GETOS | sed 's/\([a-zA-Z]\)\s.*/\1/')
 VER=$(echo $GETOS | grep -o [0-9]|head -n1)
-clear
-echo "$OS $VER"
+INSTALL=$(wget -qO- --no-check-certificate "https://github.com/anamunlam/bash/edit/master/LEMP/${OS}${VER}.sh")
+if [ "$?" -eq '0' ]; then
+    bash -c "${INSTALL}"
+else
+    echo "OS or version not supported yet"
+    exit 1
+fi
 exit
