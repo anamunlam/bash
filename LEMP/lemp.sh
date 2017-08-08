@@ -17,6 +17,7 @@ GETOS=$( get_os )
 
 OS=$(echo $GETOS | sed 's/\([a-zA-Z]\)\s.*/\1/')
 VER=$(echo $GETOS | grep -o [0-9]|head -n1)
+echo "${OS}${VER}"
 INSTALL=$(wget -qO- --no-check-certificate "https://raw.githubusercontent.com/anamunlam/bash/master/LEMP/${OS}${VER}.sh")
 if [ "$?" -eq '0' ]; then
     bash -c "${INSTALL}"
